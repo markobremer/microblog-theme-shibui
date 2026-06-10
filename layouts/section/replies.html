@@ -1,0 +1,26 @@
+{{ define "main" }}
+  {{ if .Title }}<h1>{{ .Title }}</h1>{{ end }}
+  <div class="microblog-feed h-feed">
+    {{ $list := first 25 (where .Data.Pages.ByDate.Reverse "Type" "reply") }}
+    {{ if .Site.Params.paginate_replies }}
+      {{ $paginator := .Paginate (where .Data.Pages.ByDate.Reverse "Type" "reply") }}
+      {{ $list = $paginator.Pages }}
+    {{ end }}
+    {{ range $list }}
+      <article class="micropost h-entry">
+        <div class="micropost-content e-content">{{ .Content }}</div>
+        <div class="micropost-meta">
+          <a href="{{ .Permalink }}" class="u-url no-underline">
+            <time class="dt-published" datetime="{{ .Date.Format "2006-01-02 15:04:05 -0700" }}">{{ .Date.Format "2006-01-02 15:04" }}</time>
+          </a>
+        </div>
+      </article>
+    {{ end }}
+  </div>
+  {{ if .Site.Params.paginate_replies }}{{ partial "pagination.html" . }}{{ end }}
+  <div class="terminal-nav">
+    <div class="back-nav">
+      <a href="{{ "/" | relURL }}" class="back-link">../</a>
+    </div>
+  </div>
+{{ end }}

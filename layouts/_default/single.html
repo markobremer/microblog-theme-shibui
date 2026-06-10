@@ -1,0 +1,9 @@
+{{ define "main" }}
+  {{ if .Title }}<h1>{{ .Title }}</h1>{{ end }}
+  {{ .Content }}
+  <div class="terminal-nav">
+    <div class="back-nav">
+      <a href="{{ "/" | relURL }}" class="back-link">../</a>
+    </div>
+  </div>
+{{ end }}

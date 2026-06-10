@@ -1,0 +1,20 @@
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>
+  {{- if .IsHome }}{{ .Site.Title }}
+  {{- else if .Title }}{{ .Title }} | {{ .Site.Title }}
+  {{- else }}{{ .Site.Title }}{{ with .Date }} &middot; {{ .Format "2006-01-02" }}{{ end }}
+  {{- end -}}
+</title>
+{{ with .Site.Params.description }}<meta name="description" content="{{ . | plainify }}" />{{ end }}
+<link rel="canonical" href="{{ .Permalink }}" />
+
+{{/* Open Graph */}}
+<meta property="og:title" content="{{ if .Title }}{{ .Title }}{{ else }}{{ .Site.Title }}{{ end }}" />
+{{ with .Site.Params.description }}<meta property="og:description" content="{{ . | plainify }}" />{{ end }}
+<meta property="og:type" content="{{ if .IsPage }}article{{ else }}website{{ end }}" />
+<meta property="og:url" content="{{ .Permalink }}" />
+
+<link rel="stylesheet" href="{{ "css/main.css" | relURL }}?{{ .Site.Params.theme_seconds }}" />
+
+{{ partial "microblog_head.html" . }}

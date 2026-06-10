@@ -1,0 +1,28 @@
+{{ define "main" }}
+  {{ if .Title }}<h1>{{ .Title }}</h1>{{ end }}
+  {{ .Content }}
+  <div class="microblog-feed h-feed">
+    {{ $paginator := .Paginate (where .Pages.ByDate.Reverse "Type" "post") (index .Site.Params "archive-paginate" | default 25) }}
+    {{ range $paginator.Pages }}
+      <article class="micropost h-entry">
+        {{ if .Title }}
+          <h2 class="micropost-title manual-number p-name">
+            <a href="{{ .Permalink }}">{{ .Title }}</a>
+          </h2>
+        {{ end }}
+        <div class="micropost-content e-content">{{ .Content }}</div>
+        <div class="micropost-meta">
+          <a href="{{ .Permalink }}" class="u-url no-underline">
+            <time class="dt-published" datetime="{{ .Date.Format "2006-01-02 15:04:05 -0700" }}">{{ .Date.Format "2006-01-02 15:04" }}</time>
+          </a>
+        </div>
+      </article>
+    {{ end }}
+  </div>
+  {{ partial "pagination.html" . }}
+  <div class="terminal-nav">
+    <div class="back-nav">
+      <a href="{{ "/" | relURL }}" class="back-link">../</a>
+    </div>
+  </div>
+{{ end }}

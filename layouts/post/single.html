@@ -1,0 +1,24 @@
+{{ define "main" }}
+  <article class="post h-entry">
+    {{ if .Title }}<h1 class="p-name">{{ .Title }}</h1>{{ end }}
+    <div class="micropost-content e-content">{{ .Content }}</div>
+    <div class="time">
+      <a href="{{ .Permalink }}" class="u-url no-underline">
+        <time class="dt-published" datetime="{{ .Date.Format "2006-01-02 15:04:05 -0700" }}">{{ .Date.Format "2006-01-02 15:04" }}</time>
+      </a>
+      {{ with .Params.audio }}
+        <script type="text/javascript" src="https://micro.blog/narration.js?url={{ . }}"></script>
+      {{ end }}
+    </div>
+  </article>
+
+  {{ if .Site.Params.include_conversation }}
+    <script type="text/javascript" src="https://micro.blog/conversation.js?url={{ .Permalink }}"></script>
+  {{ end }}
+
+  <div class="terminal-nav">
+    <div class="back-nav">
+      <a href="{{ "/" | relURL }}" class="back-link">../</a>
+    </div>
+  </div>
+{{ end }}

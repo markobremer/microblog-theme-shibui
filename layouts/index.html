@@ -1,0 +1,35 @@
+{{ define "main" }}
+  {{ .Content }}
+  <div class="microblog-feed h-feed">
+    {{ $paginator := .Paginate (where .Site.Pages.ByDate.Reverse "Type" "post") (index .Site.Params "archive-paginate" | default 25) }}
+    {{ range $paginator.Pages }}
+      <article class="micropost h-entry">
+        {{ if .Title }}
+          <h2 class="micropost-title manual-number p-name">
+            <a href="{{ .Permalink }}">{{ .Title }}</a>
+          </h2>
+        {{ end }}
+        <div class="micropost-content e-content">{{ .Content }}</div>
+        <div class="micropost-meta">
+          <a href="{{ .Permalink }}" class="u-url no-underline">
+            <time class="dt-published" datetime="{{ .Date.Format "2006-01-02 15:04:05 -0700" }}">{{ .Date.Format "2006-01-02 15:04" }}</time>
+          </a>
+        </div>
+      </article>
+    {{ end }}
+  </div>
+  {{ partial "pagination.html" . }}
+  <div class="terminal-nav">
+    <nav aria-label="Main navigation">
+      <ul>
+        {{ range .Site.Menus.main }}
+          {{ if .Page.Params.redirect }}
+            <li><a href="{{ .Page.Params.redirect }}">{{ .Name }}</a></li>
+          {{ else }}
+            <li><a href="{{ .URL | relLangURL | safeURL }}">{{ .Name }}</a></li>
+          {{ end }}
+        {{ end }}
+      </ul>
+    </nav>
+  </div>
+{{ end }}

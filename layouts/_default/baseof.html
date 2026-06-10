@@ -1,0 +1,16 @@
+<!doctype html>
+<html lang="{{ .Site.LanguageCode | default "es" }}">
+  <head>
+    {{ partial "head.html" . }}
+  </head>
+  <body>
+    <a href="#main-content" class="skip-link">Saltar al contenido</a>
+    <header role="banner">{{ partial "header.html" . }}</header>
+    <main id="main-content" role="main">{{ block "main" . }}{{ end }}</main>
+    <footer role="contentinfo">{{ partial "footer.html" . }}</footer>
+    {{ partial "custom_footer.html" . }}
+    {{ range .Site.Params.plugins_js }}
+      <script src="{{ . }}"></script>
+    {{ end }}
+  </body>
+</html>

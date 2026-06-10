@@ -1,0 +1,15 @@
+{{ $pag := .Paginator }}
+{{ if or $pag.HasPrev $pag.HasNext }}
+  <nav class="pagination terminal-nav" aria-label="Paginación">
+    <span>
+      {{ if $pag.HasPrev }}
+        <a href="{{ $pag.Prev.URL }}" class="back-link">&larr; más recientes</a>
+      {{ end }}
+    </span>
+    <span>
+      {{ if $pag.HasNext }}
+        <a href="{{ $pag.Next.URL }}" class="back-link">más antiguos &rarr;</a>
+      {{ end }}
+    </span>
+  </nav>
+{{ end }}
