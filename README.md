@@ -66,5 +66,6 @@ misma ruta cada uno).
   timeline (si no, los h2 de un post continuarían la cuenta del anterior).
 - Si se activa **include_conversation** en Micro.blog, la conversación se
   muestra con el mismo estilo (bordes y avatares redondos monocromos).
-- El menú de navegación de la portada sale de **Design → Pages** de Micro.blog
-  (ahí se agregan "Sobre", "Archive", etc.).
+- El menú de navegación de la portada está fijo en
+  `layouts/partials/nav.html` (blog · microblog · sobre mí), compartido con
+  blog.markobremer.com. Para cambiar las entradas, editar ese partial.

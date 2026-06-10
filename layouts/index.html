@@ -20,16 +20,6 @@
   </div>
   {{ partial "pagination.html" . }}
   <div class="terminal-nav">
-    <nav aria-label="Main navigation">
-      <ul>
-        {{ range .Site.Menus.main }}
-          {{ if .Page.Params.redirect }}
-            <li><a href="{{ .Page.Params.redirect }}">{{ .Name }}</a></li>
-          {{ else }}
-            <li><a href="{{ .URL | relLangURL | safeURL }}">{{ .Name }}</a></li>
-          {{ end }}
-        {{ end }}
-      </ul>
-    </nav>
+    {{ partial "nav.html" . }}
   </div>
 {{ end }}
