@@ -898,6 +898,22 @@ details[open] > .toc-title::before {
 .micropost-meta {
   margin-top: var(--spacing-sm);
   text-align: right;
+  position: relative;
+}
+
+/* Separador entre publicaciones: línea fina que sale del centro de la
+   fecha (a la derecha) hacia la izquierda, hasta 3/4 del camino al
+   margen, con el mismo color tenue de la fecha. La fecha DD/MM/YY ocupa
+   ~5.6ch (8 caracteres a 0.7em), así que su centro queda a ~2.8ch. */
+.micropost-meta::before {
+  content: "";
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  right: 2.8ch;
+  left: 25%;
+  height: 1px;
+  background: color-mix(in srgb, var(--color-text-muted), var(--color-bg-primary) 35%);
 }
 
 .micropost-meta time {
