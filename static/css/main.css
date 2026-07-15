@@ -74,6 +74,19 @@
   border-bottom: none;
 }
 
+/* Oculto visualmente pero accesible para lectores de pantalla / SEO. */
+.visually-hidden {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
+
 ::selection {
   background: var(--color-selection-bg);
   color: var(--color-text-primary);
@@ -833,10 +846,13 @@ details[open] > .toc-title::before {
 /* Cada micropost reinicia los contadores de encabezados de shibui,
    para que los h2/h3 dentro de un post no continúen la numeración
    del post anterior en el timeline. */
-/* Descripción de categoría/sección: separación con el primer post
-   equivalente al gap superior (título de categoría ↔ menú/breadcrumb).
-   4.5em + el padding-top del primer post (1.5em) ≈ 6em. */
+/* Descripción de categoría/sección. El título de la sección ya está en
+   el breadcrumb, así que la descripción se pega a éste con el mismo
+   tratamiento que el menú en la portada (margen negativo que absorbe el
+   gap del grid). El margen inferior mantiene la separación con el primer
+   post. */
 .section-intro {
+  margin-top: calc(var(--spacing-lg) * -1);
   margin-bottom: calc(var(--spacing-base) * 3);
 }
 
