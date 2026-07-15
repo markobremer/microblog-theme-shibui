@@ -2,15 +2,39 @@
 <html lang="{{ .Site.LanguageCode | default "es" }}">
   <head>
     {{ partial "head.html" . }}
+    <script>
+      (function () {
+        var t = localStorage.getItem('shibui-theme');
+        if (t === 'dark' || (!t && matchMedia('(prefers-color-scheme: dark)').matches)) {
+          document.documentElement.classList.add('dark');
+        }
+      })();
+    </script>
   </head>
   <body>
     <a href="#main-content" class="skip-link">Saltar al contenido</a>
-    <header role="banner">{{ partial "header.html" . }}</header>
+    <header role="banner" class="site-header">
+      {{ partial "header.html" . }}
+      <button class="theme-toggle" id="theme-toggle" aria-label="Cambiar tema">[oscuro]</button>
+    </header>
     <main id="main-content" role="main">{{ block "main" . }}{{ end }}</main>
     <footer role="contentinfo">{{ partial "footer.html" . }}</footer>
     {{ partial "custom_footer.html" . }}
     {{ range .Site.Params.plugins_js }}
       <script src="{{ . }}"></script>
     {{ end }}
+    <script>
+      (function () {
+        var btn = document.getElementById('theme-toggle');
+        var root = document.documentElement;
+        function label() { btn.textContent = root.classList.contains('dark') ? '[claro]' : '[oscuro]'; }
+        label();
+        btn.addEventListener('click', function () {
+          root.classList.toggle('dark');
+          localStorage.setItem('shibui-theme', root.classList.contains('dark') ? 'dark' : 'light');
+          label();
+        });
+      })();
+    </script>
   </body>
 </html>
