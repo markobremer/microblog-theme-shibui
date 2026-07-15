@@ -354,18 +354,27 @@ h5 > code {
 
 .time-list li {
   display: grid;
-  grid-template-columns: auto 1fr;
-  gap: var(--gap-base);
+  grid-template-columns: 1fr; /* fecha arriba, título abajo (como en móvil) */
+  gap: var(--gap-small);
   align-items: start;
-  padding: var(--spacing-sm) 0;
+  padding: 0;
+  margin-bottom: var(--spacing-base); /* separación entre artículos */
+}
+
+.time-list li:last-child {
+  margin-bottom: 0;
+}
+
+/* Sin subrayado punteado en los títulos del listado. */
+.time-list li a {
+  border-bottom: none;
+}
+
+.time-list li a:hover {
+  border-bottom: 1px solid;
 }
 
 @media (max-width: 600px) {
-  .time-list li {
-    grid-template-columns: 1fr;
-    gap: var(--gap-small);
-  }
-
   .time-list time {
     font-size: var(--font-size-small);
   }
