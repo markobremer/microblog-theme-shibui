@@ -346,11 +346,6 @@ h5 > code {
   text-decoration: none;
 }
 
-/* Encabezado del listado de la portada (mismo aire que en el blog). */
-.home-posts-title {
-  margin-top: calc(var(--spacing-base) * 4);
-}
-
 /* Time list */
 .time-list ul {
   list-style: none;
@@ -453,18 +448,16 @@ h5 > code {
   margin: calc(var(--spacing-base) * 0.5) 0;
 }
 
-/* Menú principal ubicado justo debajo del nombre (header). Espejo del
-   separador de footer de .terminal-nav: sin borde/margen arriba (queda
-   pegado al nombre con el gap del grid del body), y la línea de
-   separación pasa a estar debajo del menú, separándolo del primer
-   artículo. */
+/* Menú principal pegado al nombre (header): margen negativo que absorbe
+   el gap del grid del body, dejándolo justo debajo del nombre. Sin línea
+   separadora; la separación con el listado es sólo espacial. */
 .top-nav {
   border-top: none;
-  margin-top: 0;
+  border-bottom: none;
+  margin-top: calc(var(--spacing-lg) * -1);
   padding-top: 0;
-  border-bottom: 1px solid var(--color-border);
-  padding-bottom: var(--spacing-base);
-  margin-bottom: var(--spacing-base);
+  padding-bottom: 0;
+  margin-bottom: calc(var(--spacing-base) * 4);
 }
 
 /* Image styles */

@@ -6,12 +6,11 @@
   {{ $posts := where .Site.Pages.ByDate.Reverse "Type" "post" }}
   {{ $posts = where $posts "Params.categories" "intersect" (slice "Blog") }}
   {{ with $posts }}
-  <h2 class="manual-number home-posts-title">Blog</h2>
   <div class="time-list">
     <ul>
-      {{ range . }}
+      {{ range first 10 . }}
       <li>
-        <time datetime="{{ .Date.Format "2006-01-02" }}">{{ .Date.Format "2006-01-02" }}</time>
+        <time datetime="{{ .Date.Format "2006-01-02" }}">{{ .Date.Format "02/01/06" }}</time>
         <div><a href="{{ .Permalink }}">{{ .LinkTitle }}</a></div>
       </li>
       {{ end }}
