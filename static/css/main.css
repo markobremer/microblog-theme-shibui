@@ -346,6 +346,11 @@ h5 > code {
   text-decoration: none;
 }
 
+/* Encabezado del listado de la portada (mismo aire que en el blog). */
+.home-posts-title {
+  margin-top: calc(var(--spacing-base) * 4);
+}
+
 /* Time list */
 .time-list ul {
   list-style: none;

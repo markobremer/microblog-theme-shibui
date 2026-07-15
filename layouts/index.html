@@ -3,23 +3,19 @@
     {{ partial "nav.html" . }}
   </div>
   {{ .Content }}
-  <div class="microblog-feed h-feed">
-    {{ $paginator := .Paginate (where .Site.Pages.ByDate.Reverse "Type" "post") (index .Site.Params "archive-paginate" | default 25) }}
-    {{ range $paginator.Pages }}
-      <article class="micropost h-entry">
-        {{ if .Title }}
-          <h2 class="micropost-title manual-number p-name">
-            <a href="{{ .Permalink }}">{{ .Title }}</a>
-          </h2>
-        {{ end }}
-        <div class="micropost-content e-content">{{ .Content }}</div>
-        <div class="micropost-meta">
-          <a href="{{ .Permalink }}" class="u-url no-underline">
-            <time class="dt-published" datetime="{{ .Date.Format "2006-01-02 15:04:05 -0700" }}">{{ .Date.Format "2006-01-02 15:04" }}</time>
-          </a>
-        </div>
-      </article>
-    {{ end }}
+  {{ $posts := where .Site.Pages.ByDate.Reverse "Type" "post" }}
+  {{ $posts = where $posts "Params.categories" "intersect" (slice "Blog") }}
+  {{ with $posts }}
+  <h2 class="manual-number home-posts-title">Blog</h2>
+  <div class="time-list">
+    <ul>
+      {{ range . }}
+      <li>
+        <time datetime="{{ .Date.Format "2006-01-02" }}">{{ .Date.Format "2006-01-02" }}</time>
+        <div><a href="{{ .Permalink }}">{{ .LinkTitle }}</a></div>
+      </li>
+      {{ end }}
+    </ul>
   </div>
-  {{ partial "pagination.html" . }}
+  {{ end }}
 {{ end }}
