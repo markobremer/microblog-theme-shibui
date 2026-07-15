@@ -914,7 +914,7 @@ details[open] > .toc-title::before {
   right: 6.5ch;
   left: 25%;
   height: 1px;
-  background: color-mix(in srgb, var(--color-text-muted), var(--color-bg-primary) 55%);
+  background: var(--color-border); /* igual que la línea de .section-intro */
 }
 
 .micropost-meta time {
