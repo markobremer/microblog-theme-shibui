@@ -1,4 +1,5 @@
 {{ define "main" }}
+  {{ if .Title }}<h1>{{ .Title }}</h1>{{ end }}
   {{ .Content }}
   <div class="microblog-feed h-feed">
     {{ $paginator := .Paginate (where .Pages.ByDate.Reverse "Type" "post") (index .Site.Params "archive-paginate" | default 25) }}
@@ -12,7 +13,7 @@
         <div class="micropost-content e-content">{{ .Content }}</div>
         <div class="micropost-meta">
           <a href="{{ .Permalink }}" class="u-url no-underline">
-            <time class="dt-published" datetime="{{ .Date.Format "2006-01-02 15:04:05 -0700" }}">{{ .Date.Format "02/01/06 15:04" }}</time>
+            <time class="dt-published" datetime="{{ .Date.Format "2006-01-02 15:04:05 -0700" }}">{{ .Date.Format "2006-01-02 15:04" }}</time>
           </a>
         </div>
       </article>

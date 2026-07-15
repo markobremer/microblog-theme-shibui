@@ -15,7 +15,7 @@
     <a href="{{ .p1.RelPermalink }}">
       {{- if .p1.IsHome }}{{ .p1.Site.Title }}
       {{- else if .p1.Title }}{{ .p1.Title }}
-      {{- else }}{{ with .p1.Date }}{{ .Format "02/01/06" }}{{ end }}
+      {{- else }}{{ with .p1.Date }}{{ .Format "2006-01-02" }}{{ end }}
       {{- end -}}
     </a>
     {{ if ne .p1 .p2 }}/{{ end }}
