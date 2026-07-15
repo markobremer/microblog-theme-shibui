@@ -15,6 +15,6 @@
 <meta property="og:type" content="{{ if .IsPage }}article{{ else }}website{{ end }}" />
 <meta property="og:url" content="{{ .Permalink }}" />
 
-<link rel="stylesheet" href="{{ "css/main.css" | relURL }}?{{ .Site.Params.theme_seconds }}" />
+<link rel="stylesheet" href="{{ "css/main.css" | relURL }}?{{ with .Site.Params.theme_seconds }}{{ . }}{{ else }}{{ now.Unix }}{{ end }}" />
 
 {{ partial "microblog_head.html" . }}
