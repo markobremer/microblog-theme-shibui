@@ -448,6 +448,15 @@ h5 > code {
   margin: calc(var(--spacing-base) * 0.5) 0;
 }
 
+/* Menú principal ubicado justo debajo del nombre (header), sin el
+   separador de footer que usa .terminal-nav por defecto. */
+.top-nav {
+  border-top: none;
+  margin-top: 0;
+  padding-top: 0;
+  margin-bottom: calc(var(--spacing-base) * 2);
+}
+
 /* Image styles */
 img {
   display: block;
