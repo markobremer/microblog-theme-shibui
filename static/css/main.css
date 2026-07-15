@@ -859,7 +859,7 @@ details[open] > .toc-title::before {
 
 .microblog-feed .h-entry {
   counter-reset: h2 h3 h4 h5;
-  padding: var(--spacing-md) 0;
+  padding: var(--spacing-sm) 0;
 }
 
 .micropost-content > :first-child {
@@ -896,24 +896,25 @@ details[open] > .toc-title::before {
 }
 
 .micropost-meta {
-  margin-top: var(--spacing-sm);
+  margin-top: var(--spacing-base);
   text-align: right;
   position: relative;
 }
 
-/* Separador entre publicaciones: línea fina que sale del centro de la
-   fecha (a la derecha) hacia la izquierda, hasta 3/4 del camino al
-   margen, con el mismo color tenue de la fecha. La fecha DD/MM/YY ocupa
-   ~5.6ch (8 caracteres a 0.7em), así que su centro queda a ~2.8ch. */
+/* Separador entre publicaciones: línea fina que termina justo a la
+   izquierda de la fecha (con un pequeño margen, sin cruzarla) y se
+   extiende hacia la izquierda hasta 3/4 del camino al margen. La fecha
+   DD/MM/YY ocupa ~5.6ch (8 caracteres a 0.7em); dejo ~0.9ch de aire.
+   Color en la misma tonalidad de la fecha pero un poco más claro. */
 .micropost-meta::before {
   content: "";
   position: absolute;
   top: 50%;
   transform: translateY(-50%);
-  right: 2.8ch;
+  right: 6.5ch;
   left: 25%;
   height: 1px;
-  background: color-mix(in srgb, var(--color-text-muted), var(--color-bg-primary) 35%);
+  background: color-mix(in srgb, var(--color-text-muted), var(--color-bg-primary) 55%);
 }
 
 .micropost-meta time {
