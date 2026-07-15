@@ -675,6 +675,12 @@ details[open] > .toc-title::before {
 
 .time {
   margin: var(--spacing-md) 0;
+  text-align: right;
+}
+
+.time time {
+  font-size: 0.7em;
+  color: color-mix(in srgb, var(--color-text-muted), var(--color-bg-primary) 35%);
 }
 
 .reading-time,
@@ -816,11 +822,6 @@ details[open] > .toc-title::before {
 .microblog-feed .h-entry {
   counter-reset: h2 h3 h4 h5;
   padding: var(--spacing-md) 0;
-  border-bottom: 1px solid var(--color-border);
-}
-
-.microblog-feed .h-entry:last-child {
-  border-bottom: none;
 }
 
 .micropost-content > :first-child {
@@ -829,6 +830,19 @@ details[open] > .toc-title::before {
 
 .micropost-content > :last-child {
   margin-bottom: 0;
+}
+
+/* Enlaces dentro del contenido: subrayado por texto (text-decoration) en
+   vez de border-bottom, para que al cortar de línea el punteado siga el
+   texto y no se extienda hasta el borde derecho. */
+.micropost-content a {
+  border-bottom: none;
+  text-decoration: underline dotted;
+  text-underline-offset: 0.15em;
+}
+
+.micropost-content a:hover {
+  text-decoration-style: solid;
 }
 
 .micropost-title {
@@ -845,10 +859,12 @@ details[open] > .toc-title::before {
 
 .micropost-meta {
   margin-top: var(--spacing-sm);
+  text-align: right;
 }
 
 .micropost-meta time {
-  font-size: var(--font-size-small);
+  font-size: 0.7em;
+  color: color-mix(in srgb, var(--color-text-muted), var(--color-bg-primary) 35%);
 }
 
 .micropost-meta a {
