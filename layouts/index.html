@@ -8,7 +8,7 @@
   {{ with $posts }}
   <div class="time-list">
     <ul>
-      {{ range first 10 . }}
+      {{ range . }}
       <li>
         <time datetime="{{ .Date.Format "2006-01-02" }}">{{ .Date.Format "02/01/06" }}</time>
         <div><a href="{{ .Permalink }}">{{ .LinkTitle }}</a></div>

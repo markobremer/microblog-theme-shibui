@@ -382,22 +382,23 @@ h5 > code {
 
 .time-list li {
   display: grid;
-  grid-template-columns: 1fr; /* fecha arriba, título abajo (como en móvil) */
-  gap: 0.2em;
-  align-items: start;
+  grid-template-columns: auto 1fr; /* fecha izquierda, título derecha (estilo stephango) */
+  gap: var(--gap-base);
+  align-items: baseline;
   padding: 0;
-  margin-bottom: var(--spacing-base); /* separación entre artículos */
+  margin-bottom: var(--spacing-sm); /* filas compactas */
 }
 
 .time-list li:last-child {
   margin-bottom: 0;
 }
 
-/* Sin subrayado punteado en los títulos del listado. */
+/* Títulos del listado en negrita, con subrayado punteado (por texto). */
 .time-list li a {
   border-bottom: none;
   text-decoration: underline dotted;
   text-underline-offset: 0.15em;
+  font-weight: bold;
 }
 
 .time-list li a:hover {
@@ -405,9 +406,8 @@ h5 > code {
   text-decoration-style: solid;
 }
 
-/* Fecha: más chica, en negrita y un tono más claro que el muted. */
+/* Fecha: mismo gris tenue, en el tamaño del título (base) y sin bold. */
 .time-list time {
-  font-size: 0.7em;
   font-weight: normal;
   color: color-mix(in srgb, var(--color-text-muted), var(--color-bg-primary) 35%);
 }
