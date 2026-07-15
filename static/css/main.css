@@ -384,9 +384,9 @@ h5 > code {
   display: grid;
   grid-template-columns: auto 1fr; /* fecha izquierda, título derecha (estilo stephango) */
   gap: var(--gap-base);
-  align-items: baseline;
+  align-items: start; /* start (no baseline): evita que un título de 2 líneas se encime */
   padding: 0;
-  margin-bottom: var(--spacing-sm); /* filas compactas */
+  margin-bottom: var(--spacing-base); /* espacio cómodo, incluso con títulos de 2 líneas */
 }
 
 .time-list li:last-child {
