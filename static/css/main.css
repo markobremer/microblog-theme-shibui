@@ -128,7 +128,7 @@ ol {
 }
 
 html {
-  margin: 0 0 0 calc(100vw - 100%);
+  scrollbar-gutter: stable;
   -webkit-text-size-adjust: 100%;
   height: 100%;
 }
@@ -139,10 +139,17 @@ body {
   min-height: 100%;
   display: grid;
   grid-template-rows: auto 1fr auto;
-  grid-template-columns: minmax(auto, var(--container-width));
+  grid-template-columns: minmax(0, var(--container-width));
   justify-content: center;
   padding: var(--spacing-lg);
   gap: var(--spacing-lg);
+  overflow-wrap: break-word;
+}
+
+/* Los hijos del grid (header/main/footer) deben poder encogerse bajo el
+   ancho de su contenido; si no, un texto largo desborda la columna. */
+body > * {
+  min-width: 0;
 }
 
 a {
@@ -692,11 +699,11 @@ details[open] > .toc-title::before {
 
 @media (max-width: 600px) {
   body {
-    padding-top: 2em;
+    padding: 2em var(--spacing-base);
   }
 
   pre {
-    max-width: calc(100vw - 4em);
+    max-width: calc(100vw - 2 * var(--spacing-base));
   }
 }
 
