@@ -833,6 +833,13 @@ details[open] > .toc-title::before {
 /* Cada micropost reinicia los contadores de encabezados de shibui,
    para que los h2/h3 dentro de un post no continúen la numeración
    del post anterior en el timeline. */
+/* Descripción de categoría/sección: separación con el primer post
+   equivalente al gap superior (título de categoría ↔ menú/breadcrumb).
+   4.5em + el padding-top del primer post (1.5em) ≈ 6em. */
+.section-intro {
+  margin-bottom: calc(var(--spacing-base) * 3);
+}
+
 .microblog-feed .h-entry {
   counter-reset: h2 h3 h4 h5;
   padding: var(--spacing-md) 0;
