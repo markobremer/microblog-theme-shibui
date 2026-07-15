@@ -223,10 +223,16 @@ time {
 
 footer {
   padding: calc(var(--spacing-base) * 2) 0;
-  text-align: center;
+  text-align: right;
+  font-size: 0.7em;
+  font-weight: normal;
+  color: color-mix(in srgb, var(--color-text-muted), var(--color-bg-primary) 35%);
 }
 footer p {
   margin-bottom: 0;
+}
+footer a {
+  color: inherit;
 }
 
 pre {
