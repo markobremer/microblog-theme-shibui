@@ -128,15 +128,16 @@ ol {
 }
 
 html {
-  scrollbar-gutter: stable;
   -webkit-text-size-adjust: 100%;
   height: 100%;
+  overflow-x: hidden; /* evita el scroll horizontal fantasma en móvil */
 }
 
 body {
   font: var(--font-size-base) / var(--spacing-base) var(--font-family-mono);
   background: var(--color-bg-primary);
   min-height: 100%;
+  max-width: 100%;
   display: grid;
   grid-template-rows: auto 1fr auto;
   grid-template-columns: minmax(0, var(--container-width));
@@ -144,6 +145,7 @@ body {
   padding: var(--spacing-lg);
   gap: var(--spacing-lg);
   overflow-wrap: break-word;
+  overflow-x: hidden;
 }
 
 /* Los hijos del grid (header/main/footer) deben poder encogerse bajo el
