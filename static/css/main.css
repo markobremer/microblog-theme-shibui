@@ -374,10 +374,11 @@ h5 > code {
   border-bottom: 1px solid;
 }
 
-@media (max-width: 600px) {
-  .time-list time {
-    font-size: var(--font-size-small);
-  }
+/* Fecha: más chica, en negrita y un tono más claro que el muted. */
+.time-list time {
+  font-size: 0.8em;
+  font-weight: bold;
+  color: color-mix(in srgb, var(--color-text-muted), var(--color-bg-primary) 35%);
 }
 
 /* Archive styles */
