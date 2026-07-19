@@ -393,12 +393,12 @@ h5 > code {
   margin-bottom: 0;
 }
 
-/* Títulos del listado en negrita, con subrayado punteado (por texto). */
+/* Títulos del listado en peso normal, con subrayado punteado (por texto). */
 .time-list li a {
   border-bottom: none;
   text-decoration: underline dotted;
   text-underline-offset: 0.15em;
-  font-weight: bold;
+  font-weight: normal;
 }
 
 .time-list li a:hover {
@@ -406,9 +406,9 @@ h5 > code {
   text-decoration-style: solid;
 }
 
-/* Fecha: mismo gris tenue, en el tamaño del título (base) y sin bold. */
+/* Fecha: mismo gris tenue, en el tamaño del título (base) y en negrita. */
 .time-list time {
-  font-weight: normal;
+  font-weight: bold;
   color: color-mix(in srgb, var(--color-text-muted), var(--color-bg-primary) 35%);
 }
 
