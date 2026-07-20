@@ -5,8 +5,8 @@
   </head>
   <body>
     <a href="#main-content" class="skip-link">Saltar al contenido</a>
-    {{/* Sin breadcrumb en las páginas de post — igual que en blog.markobremer.com */}}
-    {{ if not (and (eq .Type "post") .IsPage) }}
+    {{/* Breadcrumb solo en la portada — el resto de las páginas va sin barra de navegación */}}
+    {{ if .IsHome }}
       <header role="banner">{{ partial "header.html" . }}</header>
     {{ end }}
     <main id="main-content" role="main">{{ block "main" . }}{{ end }}</main>
