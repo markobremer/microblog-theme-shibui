@@ -5,7 +5,10 @@
   </head>
   <body>
     <a href="#main-content" class="skip-link">Saltar al contenido</a>
-    <header role="banner">{{ partial "header.html" . }}</header>
+    {{/* Sin breadcrumb en las páginas de post — igual que en blog.markobremer.com */}}
+    {{ if not (and (eq .Type "post") .IsPage) }}
+      <header role="banner">{{ partial "header.html" . }}</header>
+    {{ end }}
     <main id="main-content" role="main">{{ block "main" . }}{{ end }}</main>
     {{ partial "custom_footer.html" . }}
     {{ range .Site.Params.plugins_js }}
