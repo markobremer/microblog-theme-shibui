@@ -11,7 +11,6 @@
     {{ template "breadcrumbnav" (dict "p1" .p1.Site.Home "p2" .p2 ) }}
   {{ end }}
   <li{{ if eq .p1 .p2 }} class="current"{{ end }}>
-    {{ if .p1.IsHome }}/{{ end }}
     <a href="{{ .p1.RelPermalink }}">
       {{- if .p1.IsHome }}{{ .p1.Site.Title }}
       {{- else if .p1.Title }}{{ .p1.Title }}
